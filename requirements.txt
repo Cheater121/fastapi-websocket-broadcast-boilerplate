@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+websockets
+pydantic>=2
+pyjwt
+redis>=5
+broadcaster[redis]
