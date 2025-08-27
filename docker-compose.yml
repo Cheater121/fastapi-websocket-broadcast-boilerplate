@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      network: host
+    env_file: .env
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"   # доступ только с localhost (Nginx проксирует)
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "no"]
